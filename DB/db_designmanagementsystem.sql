@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.9
+-- version 2.11.6
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 02, 2024 at 10:49 AM
--- Server version: 5.5.20
--- PHP Version: 5.3.9
+-- Generation Time: Nov 05, 2024 at 08:14 AM
+-- Server version: 5.0.51
+-- PHP Version: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,13 +25,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_admin`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_admin` (
-  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_admin` (
+  `admin_id` int(11) NOT NULL auto_increment,
   `admin_name` varchar(20) NOT NULL,
   `admin_contact` varchar(10) NOT NULL,
   `admin_email` varchar(30) NOT NULL,
   `admin_password` varchar(10) NOT NULL,
-  PRIMARY KEY (`admin_id`),
+  PRIMARY KEY  (`admin_id`),
   UNIQUE KEY `admin_name` (`admin_name`,`admin_contact`,`admin_email`,`admin_password`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -50,14 +49,14 @@ INSERT INTO `tbl_admin` (`admin_id`, `admin_name`, `admin_contact`, `admin_email
 -- Table structure for table `tbl_booking`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_booking` (
-  `booking_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_booking` (
+  `booking_id` int(11) NOT NULL auto_increment,
   `customer_id` int(11) NOT NULL,
-  `booking_status` int(11) DEFAULT '0',
+  `booking_status` int(11) default '0',
   `booking_amount` varchar(50) NOT NULL,
   `booking_date` varchar(50) NOT NULL,
   `shop_id` int(11) NOT NULL,
-  PRIMARY KEY (`booking_id`)
+  PRIMARY KEY  (`booking_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
@@ -74,13 +73,18 @@ INSERT INTO `tbl_booking` (`booking_id`, `customer_id`, `booking_status`, `booki
 -- Table structure for table `tbl_buydesign`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_buydesign` (
-  `buydesign_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_buydesign` (
+  `buydesign_id` int(10) NOT NULL auto_increment,
   `shop_id` int(10) NOT NULL,
   `design_id` int(30) NOT NULL,
   `buydesign_date` date NOT NULL,
-  PRIMARY KEY (`buydesign_id`)
+  PRIMARY KEY  (`buydesign_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tbl_buydesign`
+--
+
 
 -- --------------------------------------------------------
 
@@ -88,8 +92,8 @@ CREATE TABLE IF NOT EXISTS `tbl_buydesign` (
 -- Table structure for table `tbl_cart`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_cart` (
-  `cart_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_cart` (
+  `cart_id` int(10) NOT NULL auto_increment,
   `product_id` int(10) NOT NULL,
   `cart_quantity` int(20) NOT NULL,
   `cart_total` int(30) NOT NULL,
@@ -97,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cart` (
   `cart_status` varchar(200) NOT NULL,
   `booking_id` int(11) NOT NULL,
   `design_id` int(11) NOT NULL,
-  PRIMARY KEY (`cart_id`)
+  PRIMARY KEY  (`cart_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
@@ -115,7 +119,7 @@ INSERT INTO `tbl_cart` (`cart_id`, `product_id`, `cart_quantity`, `cart_total`, 
 -- Table structure for table `tbl_comment`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_comment` (
+CREATE TABLE `tbl_comment` (
   `comment_id` int(11) NOT NULL,
   `comment_duedate` int(11) NOT NULL,
   `comment_design` int(11) NOT NULL,
@@ -124,8 +128,13 @@ CREATE TABLE IF NOT EXISTS `tbl_comment` (
   `design_id` int(11) NOT NULL,
   `shop_id` int(10) NOT NULL,
   `comment_ratingvalue` varchar(255) NOT NULL,
-  PRIMARY KEY (`comment_id`)
+  PRIMARY KEY  (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_comment`
+--
+
 
 -- --------------------------------------------------------
 
@@ -133,17 +142,24 @@ CREATE TABLE IF NOT EXISTS `tbl_comment` (
 -- Table structure for table `tbl_complaint`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_complaint` (
-  `complaint_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_complaint` (
+  `complaint_id` int(11) NOT NULL auto_increment,
   `complaint_date` date NOT NULL,
   `complainttype_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `complaint_reply` varchar(100) NOT NULL,
-  `complaint_status` varchar(100) NOT NULL,
-  `cart_id` int(11) NOT NULL,
-  `complaint_details` varchar(100) NOT NULL,
-  PRIMARY KEY (`complaint_id`)
+  `complaint_status` int(100) NOT NULL default '0',
+  `booking_id` int(11) NOT NULL,
+  `complaint_content` varchar(100) NOT NULL,
+  `shop_id` int(11) NOT NULL,
+  `designer_id` int(11) NOT NULL,
+  PRIMARY KEY  (`complaint_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tbl_complaint`
+--
+
 
 -- --------------------------------------------------------
 
@@ -151,10 +167,10 @@ CREATE TABLE IF NOT EXISTS `tbl_complaint` (
 -- Table structure for table `tbl_complainttype`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_complainttype` (
-  `complainttype_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_complainttype` (
+  `complainttype_id` int(11) NOT NULL auto_increment,
   `complainttype_name` varchar(100) NOT NULL,
-  PRIMARY KEY (`complainttype_id`)
+  PRIMARY KEY  (`complainttype_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
@@ -174,8 +190,8 @@ INSERT INTO `tbl_complainttype` (`complainttype_id`, `complainttype_name`) VALUE
 -- Table structure for table `tbl_customer`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_customer` (
-  `customer_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_customer` (
+  `customer_id` int(10) NOT NULL auto_increment,
   `customer_name` varchar(50) NOT NULL,
   `customer_gender` varchar(10) NOT NULL,
   `customer_contact` varchar(12) NOT NULL,
@@ -184,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `customer_proof` varchar(150) NOT NULL,
   `place_id` int(10) NOT NULL,
   `customer_password` varchar(30) NOT NULL,
-  PRIMARY KEY (`customer_id`),
+  PRIMARY KEY  (`customer_id`),
   UNIQUE KEY `customer_name` (`customer_name`,`customer_gender`,`customer_contact`,`customer_email`,`customer_photo`,`customer_proof`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -201,16 +217,21 @@ INSERT INTO `tbl_customer` (`customer_id`, `customer_name`, `customer_gender`, `
 -- Table structure for table `tbl_design`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_design` (
-  `design_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_design` (
+  `design_id` int(10) NOT NULL auto_increment,
   `design_name` varchar(50) NOT NULL,
   `design_details` varchar(500) NOT NULL,
   `design_photo` varchar(200) NOT NULL,
   `design_rate` varchar(200) NOT NULL,
   `designer_id` int(10) NOT NULL,
   `designtype_id` int(10) NOT NULL,
-  PRIMARY KEY (`design_id`)
+  PRIMARY KEY  (`design_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tbl_design`
+--
+
 
 -- --------------------------------------------------------
 
@@ -218,10 +239,10 @@ CREATE TABLE IF NOT EXISTS `tbl_design` (
 -- Table structure for table `tbl_designcategory`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_designcategory` (
-  `designcategory_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_designcategory` (
+  `designcategory_id` int(11) NOT NULL auto_increment,
   `designcategory_name` varchar(30) NOT NULL,
-  PRIMARY KEY (`designcategory_id`),
+  PRIMARY KEY  (`designcategory_id`),
   UNIQUE KEY `designcategory_name` (`designcategory_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
@@ -247,8 +268,8 @@ INSERT INTO `tbl_designcategory` (`designcategory_id`, `designcategory_name`) VA
 -- Table structure for table `tbl_designer`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_designer` (
-  `designer_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_designer` (
+  `designer_id` int(10) NOT NULL auto_increment,
   `designer_name` varchar(50) NOT NULL,
   `designer_gender` varchar(20) NOT NULL,
   `designer_contact` varchar(12) NOT NULL,
@@ -257,8 +278,8 @@ CREATE TABLE IF NOT EXISTS `tbl_designer` (
   `designer_proof` varchar(150) NOT NULL,
   `place_id` int(10) NOT NULL,
   `designer_password` varchar(20) NOT NULL,
-  `designer_status` int(200) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`designer_id`),
+  `designer_status` int(200) NOT NULL default '0',
+  PRIMARY KEY  (`designer_id`),
   UNIQUE KEY `designer_name` (`designer_name`,`designer_gender`,`designer_contact`,`designer_email`,`designer_photo`,`designer_proof`,`designer_password`,`designer_status`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -275,11 +296,11 @@ INSERT INTO `tbl_designer` (`designer_id`, `designer_name`, `designer_gender`, `
 -- Table structure for table `tbl_designtype`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_designtype` (
-  `designtype_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_designtype` (
+  `designtype_id` int(10) NOT NULL auto_increment,
   `designtype_name` varchar(50) NOT NULL,
   `designcategory_id` int(11) NOT NULL,
-  PRIMARY KEY (`designtype_id`),
+  PRIMARY KEY  (`designtype_id`),
   UNIQUE KEY `designtype_name` (`designtype_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
@@ -302,10 +323,10 @@ INSERT INTO `tbl_designtype` (`designtype_id`, `designtype_name`, `designcategor
 -- Table structure for table `tbl_district`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_district` (
-  `district_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_district` (
+  `district_id` int(10) NOT NULL auto_increment,
   `district_name` varchar(30) NOT NULL,
-  PRIMARY KEY (`district_id`),
+  PRIMARY KEY  (`district_id`),
   UNIQUE KEY `district_name` (`district_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
@@ -327,13 +348,13 @@ INSERT INTO `tbl_district` (`district_id`, `district_name`) VALUES
 -- Table structure for table `tbl_feedback`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_feedback` (
+CREATE TABLE `tbl_feedback` (
   `feedback_date` date NOT NULL,
   `feedback_content` varchar(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
-  `feedback_id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`feedback_id`)
+  `feedback_id` int(11) NOT NULL auto_increment,
+  PRIMARY KEY  (`feedback_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -350,12 +371,12 @@ INSERT INTO `tbl_feedback` (`feedback_date`, `feedback_content`, `customer_id`, 
 -- Table structure for table `tbl_place`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_place` (
-  `place_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_place` (
+  `place_id` int(10) NOT NULL auto_increment,
   `place_name` varchar(50) NOT NULL,
   `place_pincode` int(6) NOT NULL,
   `district_id` int(10) NOT NULL,
-  PRIMARY KEY (`place_id`),
+  PRIMARY KEY  (`place_id`),
   UNIQUE KEY `place_name` (`place_name`),
   UNIQUE KEY `place_pincode` (`place_pincode`,`district_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
@@ -375,16 +396,16 @@ INSERT INTO `tbl_place` (`place_id`, `place_name`, `place_pincode`, `district_id
 -- Table structure for table `tbl_product`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_product` (
+  `product_id` int(11) NOT NULL auto_increment,
   `product_name` varchar(11) NOT NULL,
   `product_prize` int(11) NOT NULL,
   `product_image` varchar(11) NOT NULL,
   `product_details` varchar(11) NOT NULL,
   `shop_id` int(11) NOT NULL,
   `producttype_id` int(10) NOT NULL,
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  PRIMARY KEY  (`product_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `tbl_product`
@@ -400,10 +421,10 @@ INSERT INTO `tbl_product` (`product_id`, `product_name`, `product_prize`, `produ
 -- Table structure for table `tbl_productcategory`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_productcategory` (
-  `productcategory_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_productcategory` (
+  `productcategory_id` int(10) NOT NULL auto_increment,
   `productcategory_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`productcategory_id`),
+  PRIMARY KEY  (`productcategory_id`),
   UNIQUE KEY `productcategory_name` (`productcategory_name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -421,11 +442,11 @@ INSERT INTO `tbl_productcategory` (`productcategory_id`, `productcategory_name`)
 -- Table structure for table `tbl_producttype`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_producttype` (
-  `producttype_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_producttype` (
+  `producttype_id` int(10) NOT NULL auto_increment,
   `producttype_name` varchar(50) NOT NULL,
   `productcategory_id` int(30) NOT NULL,
-  PRIMARY KEY (`producttype_id`)
+  PRIMARY KEY  (`producttype_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
@@ -447,15 +468,22 @@ INSERT INTO `tbl_producttype` (`producttype_id`, `producttype_name`, `productcat
 -- Table structure for table `tbl_rating`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_rating` (
-  `rating_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+CREATE TABLE `tbl_rating` (
+  `rating_id` int(11) NOT NULL auto_increment,
+  `customer_id` int(11) NOT NULL,
   `rating_value` int(11) NOT NULL,
   `rating_content` varchar(500) NOT NULL,
   `rating_datetime` varchar(50) NOT NULL,
   `product_id` int(11) NOT NULL,
-  PRIMARY KEY (`rating_id`)
+  `shop_id` int(11) NOT NULL,
+  `designer_id` int(11) NOT NULL,
+  PRIMARY KEY  (`rating_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `tbl_rating`
+--
+
 
 -- --------------------------------------------------------
 
@@ -463,18 +491,18 @@ CREATE TABLE IF NOT EXISTS `tbl_rating` (
 -- Table structure for table `tbl_shop`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_shop` (
-  `shop_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tbl_shop` (
+  `shop_id` int(10) NOT NULL auto_increment,
   `shop_name` varchar(50) NOT NULL,
   `shop_location` varchar(50) NOT NULL,
   `shop_contact` varchar(12) NOT NULL,
   `shop_email` varchar(30) NOT NULL,
-  `shop_status` int(200) NOT NULL DEFAULT '0',
+  `shop_status` int(200) NOT NULL default '0',
   `place_id` int(10) NOT NULL,
   `shop_password` int(11) NOT NULL,
   `shop_photo` varchar(500) NOT NULL,
   `shop_proof` varchar(500) NOT NULL,
-  PRIMARY KEY (`shop_id`),
+  PRIMARY KEY  (`shop_id`),
   UNIQUE KEY `shop_name` (`shop_name`,`shop_location`,`shop_contact`,`shop_email`,`shop_status`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -484,7 +512,3 @@ CREATE TABLE IF NOT EXISTS `tbl_shop` (
 
 INSERT INTO `tbl_shop` (`shop_id`, `shop_name`, `shop_location`, `shop_contact`, `shop_email`, `shop_status`, `place_id`, `shop_password`, `shop_photo`, `shop_proof`) VALUES
 (1, 'Isha Boutique', 'Avoli Junction', '9967564531', 'ishaboutique@gmail.com', 0, 1, 22222, 'Isha Boutique.jfif', 'Isha Boutique.jfif');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
