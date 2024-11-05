@@ -18,6 +18,7 @@
   <link rel="stylesheet" type="text/css" href="../Asset/Templates/Main/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap"
@@ -257,27 +258,54 @@
 
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
-                <li class="nav-item ">
-                  <a class="nav-link  active" href="Index.php" id="dropdownHome" 
-                    >Home</a>
-                 
-                </li>
-                
-               
-                
                 <li class="nav-item">
-                  <a class="nav-link" href="Guest/Customer.php">Customer</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Guest/DesignerRegistration.php">Designer</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Guest/ShopRegistration.php">Shop</a>
+                  <a class="nav-link" href="HomePage.php"><i class="fa-solid fa-house"></i></a>
                 </li>
 
-               
+
+
+                
+                
                 <li class="nav-item">
-                  <a class="nav-link" href="Guest/Login.php">Login</a>
+                  <a class="nav-link" href="ProductEntry.php">Product</a>
+                </li>
+                
+
+                <li class="nav-item">
+                  <a class="nav-link" href="MyBooking.php">MyBooking</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="ViewOrders.php">View Orders</a>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownShop" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Complaints</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
+                    <li>
+                      <a href="Complaint.php" class="dropdown-item item-anchor">Complaint</a>
+                    </li>
+                    <li>
+                      <a href="Feedback.php" class="dropdown-item item-anchor">Feedback </a>
+                    </li>
+                    
+                    
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="MyProfile.php"><i class="fa-solid fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="MyCart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="SearchDesign.php"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../Logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </li>
               </ul>
             </div>

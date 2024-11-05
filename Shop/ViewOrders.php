@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
             <th>Action</th>
         </tr>
         <?php
-        $selQry = "SELECT * FROM tbl_cart c 
+    echo    $selQry = "SELECT * FROM tbl_cart c 
                                 INNER JOIN tbl_product p ON c.product_id = p.product_id 
                                 INNER JOIN tbl_booking b ON c.booking_id = b.booking_id 
                                 WHERE booking_status=2 AND p.shop_id = " . $_SESSION['shopid'];

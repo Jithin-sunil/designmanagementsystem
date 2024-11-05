@@ -257,27 +257,51 @@
 
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
-                <li class="nav-item ">
-                  <a class="nav-link  active" href="Index.php" id="dropdownHome" 
-                    >Home</a>
-                 
-                </li>
-                
-               
-                
                 <li class="nav-item">
-                  <a class="nav-link" href="Guest/Customer.php">Customer</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Guest/DesignerRegistration.php">Designer</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Guest/ShopRegistration.php">Shop</a>
+                  <a class="nav-link" href="HomePage.php"><i class="fa-solid fa-house"></i></a>
                 </li>
 
-               
+
+
                 <li class="nav-item">
-                  <a class="nav-link" href="Guest/Login.php">Login</a>
+                  <a class="nav-link" href="MyProfile.php"><i class="fa-solid fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="SearchDesign.php"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="ProductEntry.php">Product</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="MyCart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="MyBooking.php">MyBooking</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="ViewOrders.php">View Orders</a>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownShop" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Complaints</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
+                    <li>
+                      <a href="Complaint.php" class="dropdown-item item-anchor">Complaint</a>
+                    </li>
+                    <li>
+                      <a href="Feedback.php" class="dropdown-item item-anchor">Feedback </a>
+                    </li>
+                    
+                    
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="../Logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
                 </li>
               </ul>
             </div>
@@ -286,8 +310,8 @@
 
         <div class="col-3 col-lg-auto">
           <ul class="list-unstyled d-flex m-0">
-           
-            
+
+
         </div>
 
       </div>
